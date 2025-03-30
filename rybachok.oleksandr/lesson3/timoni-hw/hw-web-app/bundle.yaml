@@ -1,0 +1,30 @@
+bundle:
+  apiVersion: v1alpha1
+  name: web-bundle
+  instances:
+    prod:
+      namespace: "web-prod"
+      module:
+        url: file://../hw-web-app
+      values:
+        appName: "web-prod"
+        replicas: 3
+        message: "Hello, Prod!"
+        image:
+          repository: "nginx"
+          tag: "latest"
+          digest: ""
+          pullPolicy: "IfNotPresent"
+    stage:
+      namespace: "web-stage"
+      module:
+        url: file://../hw-web-app
+      values:
+        appName: "web-staging"
+        replicas: 1
+        message: "Hello, Stage!"
+        image:
+          repository: "nginx"
+          tag: "latest"
+          digest: ""
+          pullPolicy: "IfNotPresent"
